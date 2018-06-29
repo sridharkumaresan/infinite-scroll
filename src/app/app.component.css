@@ -1,0 +1,23 @@
+.container{
+    height: 60%;
+    width: 100%;
+}
+.infinite-scroller {
+    margin: 1em;
+    border: 1px solid #f5ad7c;
+    overflow: scroll;
+    padding: 0;
+    list-style: none;
+    font-size: 12px; 
+    height: calc(100vh - 30vh);
+}
+li {
+    padding : 2em;
+    line-height: 1.5;
+}
+li:nth-child(odd) {
+    background : #ffe8d8;
+}
+li:nth-child(even) {
+    background : #f5ad7c;
+}
