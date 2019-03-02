@@ -1,0 +1,7 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="toggleMenu($event)"><mat-icon>menu</mat-icon></button>
+  <div [@toggle]="toggle()" fxLayout="row" fxLayoutAlign="center center" fxFlex>
+    <app-search></app-search>
+  </div>
+</mat-toolbar>
+

@@ -1,0 +1,28 @@
+.skewClass{
+    width:100%;
+    height:100px;
+    background: black;
+    position: relative;
+}
+
+.skewClass:before{
+    content: '';
+    width: 55%;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    top:-50px;
+    background: black;
+    transform: skewY(5deg);
+}
+
+.skewClass:after{
+    content: '';
+    width: 55%;
+    height: 120px;
+    position: absolute;
+    right: 0;
+    top:-50px;
+    background: black;
+    transform: skewY(-5deg);
+}

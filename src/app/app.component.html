@@ -1,9 +1,116 @@
-<div class="container">
-  <ul class="infinite-scroller" 
-  infiniteScroller 
-  scrollPercent="70" 
-  [immediateCallback]="true" 
-  [scrollCallback]="scrollCallback">
-    <li *ngFor="let item of news">{{item.title}}</li>
-  </ul>
-</div>
+<main class="app-container">
+  <app-header (toggleHBMenu)="snav.toggle()"></app-header>  
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="'over'">
+      <mat-nav-list>
+        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content bdScroll (scrollAction)="bdScrollAction($event)">
+    <!-- <mat-sidenav-content class="sidenav-content" #scrollableArea> -->
+      <!-- <button (click)="sendData()">click</button> -->
+      <div class="container" fxLayout="column stretch">
+          <div [@toggle]="toggle()" fxLayoutAlign="center center" *ngIf="!(showTopBarSearch$ | async)">
+            <app-search></app-search>
+          </div>
+          <div fxLayoutAlign="center center">
+            <mat-slide-toggle
+            [(ngModel)]="showMasonry"
+            (change)="changeView()">Turn on Masonry</mat-slide-toggle>
+          </div>
+          <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
+          <!-- <div fxLayout="column stretch" fxLayoutAlign="center center" fxFlex="1" class="skew-bg">
+
+          </div> -->
+          <div fxLayout="row" fxLayoutAlign="center center" 
+            class="grid-container">
+            <ng-container *ngTemplateOutlet="showMasonry ? masonryGrid : defaultGrid"></ng-container>
+            <div class="grid-bottom"></div>
+          </div>
+          
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main> 
+
+<!-- <ng-template #cdkScrollable>
+  <cdk-virtual-scroll-viewport itemSize="10" 
+    (scrolledIndexChange)="nextBatch($event, (people[people.length - 1].name))">
+
+    <li *cdkVirtualFor="let item of news; let i = index; ">
+      <mat-card class="example-card" class="mat-elevation-z1">
+        <mat-card-content>
+          <p>
+            {{item.title}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between none" >
+          <mat-chip-list>
+            <mat-chip color="primary">One fish</mat-chip>
+          </mat-chip-list>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  
+  </cdk-virtual-scroll-viewport>
+</ng-template> -->
+<ng-template #masonryGrid>
+  <div fxLayout="row" 
+    fxLayoutAlign="center start" 
+    fxLayoutGap="20px"
+    class="infinite-scroller" 
+    infiniteScroller 
+    scrollPercent="98" 
+    [immediateCallback]="false" 
+    [scrollCallback]="scrollCallback" >
+    <div *ngFor="let row of _mNews" 
+          fxFlex="33" 
+          fxLayout="column" 
+          fxLayoutAlign="center start" 
+          fxLayoutGap="20px">
+      <div *ngFor="let item of row" [style.width]="'100%'">
+        <mat-card class="example-card" class="mat-elevation-z1">
+          <mat-card-content>
+            <p>
+              {{item.title}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions fxLayout="row" fxLayoutAlign="space-between none" >
+            <mat-chip-list>
+              <mat-chip color="primary">One fish</mat-chip>
+            </mat-chip-list>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+ <ng-template #defaultGrid>
+    <ul class="infinite-scroller"  
+    infiniteScroller 
+    scrollPercent="98" 
+    [immediateCallback]="true" 
+    [scrollCallback]="scrollCallback" fxLayout="column" fxLayoutGap="1em">
+      <li *ngFor="let item of news" >
+        <mat-card class="example-card" class="mat-elevation-z1">
+          <mat-card-content>
+            <p>
+              {{item.title}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions fxLayout="row" fxLayoutAlign="space-between none" >
+            <mat-chip-list>
+              <mat-chip color="primary">One fish</mat-chip>
+            </mat-chip-list>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+    <!-- <div class="loader" fxLayout="row" fxLayoutAlign="center center" *ngIf="loading">
+      Loading...
+    </div> -->
+ </ng-template>
