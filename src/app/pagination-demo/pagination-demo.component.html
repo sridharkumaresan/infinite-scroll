@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1em">
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1em">
+    <div class="row" *ngFor="let item of list">
+      {{item}}
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlexOffset="2em">
+    <direct-pagination
+    (goPage)="goToPage($event)"
+    (goNext)="onNext()"
+    (goPrev)="onPrev()"
+    [pagesToShow]="3"
+    [page]="page"
+    [perPage]="limit"
+    [count]="total"
+    [simpleMode]="true">
+
+    </direct-pagination>
+  </div>
+</div>

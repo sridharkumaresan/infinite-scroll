@@ -1,3 +1,4 @@
+import { DirectPaginationComponent } from './direct-pagination/direct-pagination.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,6 +15,8 @@ import { BdScrollDirective } from './bd.scroll.container.directive';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BannerComponent } from './banner/banner.component';
+import { FlexColumnDemoComponent } from './flex-column-demo/flex-column-demo.component';
+import { PaginationDemoComponent } from './pagination-demo/pagination-demo.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { BannerComponent } from './banner/banner.component';
     HeaderComponent,
     BdScrollDirective,
     SearchComponent,
-    BannerComponent
+    BannerComponent,
+    FlexColumnDemoComponent,
+    DirectPaginationComponent,
+    PaginationDemoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,7 @@ import { BannerComponent } from './banner/banner.component';
     ScrollDispatchModule
   ],
   providers: [
-    
+
   ],
   bootstrap: [AppComponent]
 })

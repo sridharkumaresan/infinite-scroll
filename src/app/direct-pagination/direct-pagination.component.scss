@@ -1,0 +1,41 @@
+:host {
+	display: flex;
+	.pagination {
+		flex: 1;
+		display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-size: 14px;
+		.description {
+			.page-counts {
+				margin-right: 12px * 2;
+			}
+		}
+
+		.numbers {
+			flex: 1;
+      align-content: center;
+      margin-left: 1em;
+			button {
+				flex: 0 0 auto;
+				outline: none;
+				border: 0;
+				padding: 0 (12px / 2);
+				// background: transparent;
+				cursor: pointer;
+
+				&.active {
+
+				}
+
+				&.disabled {
+          color: lightgrey;
+          // cursor: not-allowed;
+				}
+      }
+      .page {
+        background: transparent;
+      }
+		}
+	}
+}
